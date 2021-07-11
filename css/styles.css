@@ -60,6 +60,8 @@ p {
   font-weight: 500;
   line-height: 1.14;
   letter-spacing: 0.02em;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .link {
   color: var(--sub-text-color);
@@ -96,8 +98,19 @@ p {
 }
 .active-page {
   color: var(--brand-color);
+  position: relative;
 }
-
+.active-page::after {
+  content: "";
+  background: var(--brand-color);
+  border-radius: 2px;
+  width: 100%;
+  height: 4px;
+  position: absolute;
+  display: block;
+  top: 45px;
+  left: 0;
+}
 .link-item svg {
   margin-right: 10px;
 }
@@ -109,6 +122,8 @@ p {
 .mail-svg,
 .phone-svg {
   fill: var(--sub-text-color);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .link:hover .link-svg,
 .link:focus .link-svg {
@@ -135,6 +150,7 @@ p {
     url("../images/hero-bg.jpg");
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
 }
 .hero-title {
   font-size: 44px;
@@ -201,6 +217,27 @@ p {
 .advantages {
   padding-top: 94px;
 }
+.doing-wrapper {
+  position: relative;
+}
+.doing-text {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--white-color);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(47, 48, 58, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+}
 .section {
   padding: 94px 0;
 }
@@ -221,6 +258,8 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .social-icon-link:hover,
 .social-icon-link:focus {
@@ -233,6 +272,8 @@ p {
 .social-icon,
 .brand-icon {
   fill: var(--icons-color);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .row {
   display: flex;
@@ -303,6 +344,8 @@ p {
   align-items: center;
   justify-content: center;
   height: 92px;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .customer-link:hover,
 .customer-link:focus {
@@ -325,6 +368,8 @@ p {
 }
 .footer-social-icon-link {
   background: rgba(255, 255, 255, 0.1);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-social-icon {
   fill: var(--white-color);
@@ -383,6 +428,8 @@ p {
   border-radius: 4px;
   letter-spacing: 0.03em;
   border: none;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .portfolio-button:hover,
 .portfolio-button:focus {
@@ -400,6 +447,21 @@ p {
   margin-top: 30px;
   margin-left: 30px;
 }
+.portfolio-card-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.portfolio-card-overlay {
+  position: absolute;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.03em;
+  color: var(--white-color);
+  padding: 63px 24px;
+  background: rgba(33, 150, 243, 0.9);
+  transform: translateY(100%);
+  transition: transform 250ms linear;
+}
 .portfolio-info {
   padding: 20px 24px;
   border-bottom: 1px solid var(--secondary-border-color);
@@ -412,6 +474,14 @@ p {
   letter-spacing: 0.06em;
   margin-bottom: 4px;
   color: var(--main-text-color);
+}
+.portfolio-card-link {
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.portfolio-card-link:hover .portfolio-card-overlay,
+.portfolio-card-link:focus .portfolio-card-overlay {
+  transform: translateY(-100%);
 }
 .portfolio-card-link:hover,
 .portfolio-card-link:focus {
@@ -428,20 +498,23 @@ p {
 .address {
   margin-top: 20px;
 }
+
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.2);
+  pointer-events: auto;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 250ms linear, visibility 500ms linear;
+}
 .is-hidden {
   pointer-events: none;
   opacity: 0;
   visibility: hidden;
-}
-.backdrop {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.2);
 }
 .modal {
   position: absolute;
@@ -461,11 +534,14 @@ p {
   justify-content: center;
   width: 30px;
   height: 30px;
-  position: fixed;
+  position: absolute;
+  padding: 0;
   top: 8px;
   right: 8px;
   border-radius: 50%;
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
