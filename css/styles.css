@@ -2,6 +2,7 @@
   --main-font: "Roboto", sans-serif;
   --secondary-font: "Raleway", sans-serif;
   --brand-color: #2196f3;
+  --button-hover: #188ce8;
   --main-text-color: #212121;
   --sub-text-color: #757575;
   --white-color: #fff;
@@ -60,6 +61,7 @@ p {
   font-weight: 500;
   line-height: 1.14;
   letter-spacing: 0.02em;
+  transition-property: color;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -108,23 +110,19 @@ p {
   height: 4px;
   position: absolute;
   display: block;
-  top: 45px;
+  bottom: -32px;
   left: 0;
 }
-.link-item svg {
-  margin-right: 10px;
-}
 
+.link-svg {
+  margin-right: 10px;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 .link {
   display: flex;
   align-items: center;
 }
-.mail-svg,
-.phone-svg {
-  fill: var(--sub-text-color);
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
+
 .link:hover .link-svg,
 .link:focus .link-svg {
   fill: var(--brand-color);
@@ -150,7 +148,7 @@ p {
     url("../images/hero-bg.jpg");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
 }
 .hero-title {
   font-size: 44px;
@@ -177,6 +175,11 @@ p {
   background: var(--brand-color);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
+  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hero-button:hover,
+.hero-button:focus {
+  background: var(--button-hover);
 }
 .visually-hidden {
   position: absolute;
@@ -258,6 +261,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition-property: background;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -272,6 +276,7 @@ p {
 .social-icon,
 .brand-icon {
   fill: var(--icons-color);
+  transition-property: fill;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -344,6 +349,7 @@ p {
   align-items: center;
   justify-content: center;
   height: 92px;
+  transition-property: border;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -368,8 +374,6 @@ p {
 }
 .footer-social-icon-link {
   background: rgba(255, 255, 255, 0.1);
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-social-icon {
   fill: var(--white-color);
@@ -399,6 +403,7 @@ p {
   font-size: 14px;
   line-height: 1.7;
   letter-spacing: 0.03em;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .address {
   color: var(--white-color);
@@ -428,6 +433,7 @@ p {
   border-radius: 4px;
   letter-spacing: 0.03em;
   border: none;
+  transition-property: color, box-shadow;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -476,6 +482,9 @@ p {
   color: var(--main-text-color);
 }
 .portfolio-card-link {
+  box-sizing: border-box;
+  display: block;
+  transition-property: box-shadow;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -485,8 +494,6 @@ p {
 }
 .portfolio-card-link:hover,
 .portfolio-card-link:focus {
-  box-sizing: border-box;
-  display: block;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
